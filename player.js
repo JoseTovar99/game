@@ -21,19 +21,28 @@ class Player {
       break;
       case 'up':
       // decrease y postion
+      if (this.y > 0){
       this.y -= this.speed;
+    }
       break;
       case 'down':
       //increase y position
+      if (this.y < h - this.r) {
       this.y += this.speed
+    }
       break;
       case 'right':
       //increase x position
-      this.x += this.speed
+      if (this.x < w - this.r) {
+        this.x += this.speed
+      }
+
       break;
       case 'left':
       //decrease x position
+      if (this.x > 0){
       this.x -= this.speed
+    }
       break;
       default:
       break;
