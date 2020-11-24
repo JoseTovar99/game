@@ -81,13 +81,14 @@ function keyReleased(){
 
 function title() {
 
-  background(0);
+  background(207, 50, 39);
   textSize(80);
   fill(255);
   textAlign(CENTER);
-  text('MY GAME', w/2, h/5);
+  text('Runner', w/2, h/5);
   textSize(30);
-  text('click anywhere to start', w/2, h/2);
+  text('Use arrow keys to move', w/2, h/2.5);
+  text('Click anywhere to start', w/2, h/2);
 }
 
 function titleMouseClicked(){
@@ -96,7 +97,7 @@ function titleMouseClicked(){
 }
 
 function level1() {
-  background(50, 150, 200);
+  background(232, 179, 56);
 
   if (random(1) <= 0.01){
     coins.push(new Coin());
