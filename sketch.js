@@ -9,12 +9,15 @@ let w = 600;
 let h = 600;
 let player;
 let coins = [];
+let partner;
 let playerImg
 let coinImg
+let partnerImg;
 
 function preload(){
   playerImg = loadImage('Hero-1.png.png');
   coinImg = loadImage('New Piskel-1.png.png');
+  partnerImg = loadImage('New Piskel-1.png (1).png');
 }
 
 function setup() {
@@ -25,6 +28,9 @@ function setup() {
   player = new Player();
   //coins[0] = new Coin();
   coins.push(new Coin());
+
+  partner = new Partner();
+
 }
 
 function draw() {
@@ -85,10 +91,12 @@ function title() {
   textSize(80);
   fill(255);
   textAlign(CENTER);
-  text('Runner', w/2, h/5);
+  text('Defender', w/2, h/5);
   textSize(30);
-  text('Use arrow keys to move', w/2, h/2.5);
-  text('Click anywhere to start', w/2, h/2);
+  text('Use arrow keys to move', w/2, h/2);
+  text('Click anywhere to start', w/2, h/1.7);
+  textSize(20);
+  text('Defend your partner from getting COVID', w/2, h/3)
 }
 
 function titleMouseClicked(){
@@ -105,6 +113,7 @@ function level1() {
 
   player.display();
   player.move();
+  partner.display();
 
   //using for loop
   for (let i = 0; i < coins.length; i++){
