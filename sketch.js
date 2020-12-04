@@ -4,7 +4,7 @@
 
 let state = 'title';
 let cnv;
-let points = 0;
+let points = 10;
 let w = 600;
 let h = 600;
 let player;
@@ -13,6 +13,7 @@ let partner;
 let playerImg
 let coinImg
 let partnerImg;
+let bullets = [];
 
 function preload(){
   playerImg = loadImage('Hero-1.png.png');
@@ -52,6 +53,7 @@ function draw() {
         break;
   }
 }
+
 
 function keyPressed(){
   if (keyCode == LEFT_ARROW){
@@ -138,7 +140,7 @@ function level1() {
   // check for collision, if there is collision then increase point by 1 AND splice that coin out of the array
   for (let i = coins.length - 1; i >= 0; i--){
   if (dist(player.x, player.y, coins[i].x, coins[i].y) <= (player.r + coins[i].r) / 2){
-    points++;
+    points++ - 1;
     console.log(points);
     coins.splice(i, 1);
   } else if (coins[i].y > h){
@@ -147,7 +149,8 @@ function level1() {
   }
 }
 
-  text(`points: ${points}`, w / 4, h - 30);
+    //text for points below
+  //text(`points: ${points}`, w / 4, h - 30);
 
 }
 
