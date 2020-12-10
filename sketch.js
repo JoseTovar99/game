@@ -12,13 +12,16 @@ let coins = [];
 let partner;
 let playerImg
 let coinImg
+let projectileImg
 let partnerImg;
-let bullets = [];
+let projectiles = [];
 
 function preload(){
   playerImg = loadImage('Hero-1.png.png');
   coinImg = loadImage('New Piskel-1.png.png');
   partnerImg = loadImage('New Piskel-1.png (1).png');
+  projectileImg = loadImage('Hand.png');
+
 }
 
 function setup() {
@@ -65,10 +68,14 @@ function keyPressed(){
   } else if (keyCode == DOWN_ARROW) {
     player.direction = 'down'
   } else if (key = ' ') {
-    player.direction = 'still';
+    projectiles.push(new Projectile);
   }
+
 }
 
+// else if (key = ' ') {
+//  player.direction = 'still';
+//}
 function keyReleased(){
 
   if (keyCode == UP_ARROW){
@@ -113,6 +120,10 @@ function level1() {
     coins.push(new Coin());
   }
 
+  for (let i = 0; i < projectiles.length; i++) {
+    projectiles[i].display();
+    projectiles[i].move();
+  }
   player.display();
   player.move();
   partner.display();
@@ -121,7 +132,14 @@ function level1() {
   for (let i = 0; i < coins.length; i++){
     coins[i].display();
     coins[i].move();
+
+    if (coins[i].y >= h + coins[i].r / 2){
+      points--;
+      coins.splice(i, 1);
+    }
   }
+
+
 
   //using forEach
   // coins.forEach(function(coin){
@@ -135,18 +153,16 @@ function level1() {
   //   coin.move();
   // }
 
-
-
+for (let i = projectiles.length - 1; i >= 0; i--) {
   // check for collision, if there is collision then increase point by 1 AND splice that coin out of the array
-  for (let i = coins.length - 1; i >= 0; i--){
-  if (dist(player.x, player.y, coins[i].x, coins[i].y) <= (player.r + coins[i].r) / 2){
-    points++ - 1;
-    console.log(points);
-    coins.splice(i, 1);
-  } else if (coins[i].y > h){
-    coins.splice(i, 1)
-    console.log('coin is out of town');
+  for (let j = coins.length - 1; j >= 0; j--){
+  if (projectiles[i] && dist(projectiles[i].x, projectiles[i].y, coins[j].x, coins[j].y) <= (projectiles[i].r + coins[j].r) / 2){
+    points--;
+    coins.splice(j, 1);
+    projectiles.splice(i, 1);
+
   }
+}
 }
 
     //text for points below
