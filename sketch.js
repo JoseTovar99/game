@@ -15,13 +15,14 @@ let coinImg
 let projectileImg
 let partnerImg;
 let projectiles = [];
+let laser;
 
 function preload(){
   playerImg = loadImage('Hero-1.png.png');
   coinImg = loadImage('New Piskel-1.png.png');
   partnerImg = loadImage('New Piskel-1.png (1).png');
   projectileImg = loadImage('Hand.png');
-
+  laser = loadSound("lasersound.mp3");
 }
 
 function setup() {
@@ -59,6 +60,10 @@ function draw() {
 
 
 function keyPressed(){
+  if (key == 's'){
+    laser.play()
+  }
+
   if (keyCode == LEFT_ARROW){
     player.direction = 'left'
   } else if (keyCode == RIGHT_ARROW) {
@@ -103,7 +108,9 @@ function title() {
   text('Defender', w/2, h/5);
   textSize(30);
   text('Use arrow keys to move', w/2, h/2);
-  text('Click anywhere to start', w/2, h/1.7);
+  text('Press S to shoot', w/2, h/1.7);
+
+  text('Click anywhere to start', w/2, h/1.5);
   textSize(20);
   text('Defend your partner from getting COVID', w/2, h/3)
 }
@@ -114,7 +121,7 @@ function titleMouseClicked(){
 }
 
 function level1() {
-  background(232, 179, 56);
+  background(166, 57, 51);
 
   if (random(1) <= 0.01){
     coins.push(new Coin());
