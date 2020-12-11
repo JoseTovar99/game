@@ -4,7 +4,7 @@
 
 let state = 'title';
 let cnv;
-let points = 10;
+let vaccine = 15;
 let w = 600;
 let h = 600;
 let player;
@@ -141,7 +141,7 @@ function level1() {
     coins[i].move();
 
     if (coins[i].y >= h + coins[i].r / 2){
-      points--;
+      vaccine--;
       coins.splice(i, 1);
     }
   }
@@ -164,7 +164,7 @@ for (let i = projectiles.length - 1; i >= 0; i--) {
   // check for collision, if there is collision then increase point by 1 AND splice that coin out of the array
   for (let j = coins.length - 1; j >= 0; j--){
   if (projectiles[i] && dist(projectiles[i].x, projectiles[i].y, coins[j].x, coins[j].y) <= (projectiles[i].r + coins[j].r) / 2){
-    points--;
+    vaccine--;
     coins.splice(j, 1);
     projectiles.splice(i, 1);
 
@@ -173,32 +173,32 @@ for (let i = projectiles.length - 1; i >= 0; i--) {
 }
 
     //text for points below
-  //text(`points: ${points}`, w / 4, h - 30);
+  text(`vaccine: ${vaccine}`, w / 4, h - 30);
 
 }
 
 function level1MouseClicked(){
-//   points++;
-//   console.log('points = ' + points);
-//
-// if (points >= 10) {
-//   state = 'you win';
+   vaccine++;
+   console.log('vaccine = ' + vaccine);
+
+ if (vaccine >= 10) {
+   state = 'you win';
+
+ }
+}
+
+// function youWin(){
+//   background(255, 50, 80);
+//   textSize(80);
+//   stroke(255);
+//   text('YOU WIN', w/2, h/2);
+//   textSize(30);
+//   text('click anywhere to restart', w/2,h * 3/4);
 //
 // }
-}
-
-function youWin(){
-  background(255, 50, 80);
-  textSize(80);
-  stroke(255);
-  text('YOU WIN', w/2, h/2);
-  textSize(30);
-  text('click anywhere to restart', w/2,h * 3/4);
-
-}
 
 function youWinMouseClicked(){
   state = 'level 1';
-  points = 0;
+  vaccine = 0;
 
 }

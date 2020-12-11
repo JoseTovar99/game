@@ -3,7 +3,7 @@ class Projectile {
     this.r = 45;
     this.x = player.x;
     this.y = player.y - player.r / 2;
-    this.speed = 2;
+    this.speed = 1;
 
   }
 
