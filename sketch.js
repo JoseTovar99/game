@@ -6,7 +6,7 @@ let state = 'title';
 let cnv;
 let vaccine = 15;
 let w = 600;
-let h = 600;
+let h = 550;
 let player;
 let coins = [];
 let partner;
